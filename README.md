@@ -1,7 +1,3 @@
-Aqui está um exemplo de README para o seu aplicativo MateriALL:
-
----
-
 # MateriALL - Aplicativo de Pedido de Materiais para Obras
 
 O MateriALL é um aplicativo desenvolvido para facilitar o pedido de materiais para obras, utilizando tecnologias modernas para oferecer uma experiência eficiente e intuitiva.
