@@ -12,7 +12,7 @@ export interface RouteButtonProps {
 
 const RouteButton = forwardRef<PressableProps, RouteButtonProps>(
   ({ variant = 'default', title, className = '', onPress, disabled = false, ...props }, ref) => {
-    let baseClasses = 'py-2 px-4 rounded-md items-center ';
+    let baseClasses = 'py-2 px-4 rounded-md items-centertext-white ';
     let variantClasses = '';
 
     switch (variant) {
