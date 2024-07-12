@@ -8,7 +8,7 @@ export interface TopBarProps {
 
 export const TopBar = forwardRef<View, TopBarProps>(({  children, ...props }, ref) => {
   return (
-    <View ref={ref} className={`flex-row items-center justify-between px-2 py-12 w-full`} {...props}>
+    <View ref={ref} className={`w-full bg-purple-700 h-4`} {...props}>
       {children}
     </View>
   );
@@ -19,7 +19,7 @@ TopBar.displayName = 'TopBar';
 
 export const TopbarHeader = forwardRef<View, TopBarProps>(({children, ...props}, ref) => {
   return(
-    <View ref={ref} className="p-1 w-auto mx-2 items-center justify-center " {...props}>
+    <View ref={ref} className="  " {...props}>
       {
         children
       }

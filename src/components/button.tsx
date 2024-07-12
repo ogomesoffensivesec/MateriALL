@@ -3,15 +3,17 @@ import { Text, TouchableOpacity } from 'react-native';
 
 export interface ButtonProps {
   variant?: 'default' | 'error' | 'success' | 'warning' | 'outlined' | 'muted';
+  size?: 'small' | 'medium' | 'large';
   title: string;
   onPress: () => void;
   className?: string;
 }
 
 const Button = forwardRef<TouchableOpacity, ButtonProps>(
-  ({ variant = 'default', title, onPress, className = '', ...props }, ref) => {
-    let baseClasses = 'py-3 px-4 my-2 rounded-md items-center ';
+  ({ variant = 'default', size = 'medium', title, onPress, className = '', ...props }, ref) => {
+    let baseClasses = 'rounded-md items-center ';
     let variantClasses = '';
+    let sizeClasses = '';
 
     switch (variant) {
       case 'default':
@@ -36,15 +38,27 @@ const Button = forwardRef<TouchableOpacity, ButtonProps>(
         variantClasses = 'bg-purple-600 text-white ';
     }
 
+    switch (size) {
+      case 'small':
+        sizeClasses = 'py-2 px-3 my-1 ';
+        break;
+      case 'large':
+        sizeClasses = 'py-4 px-6 my-3 ';
+        break;
+      default:
+        sizeClasses = 'py-3 px-4 my-2 ';
+    }
+
     return (
       <TouchableOpacity
         ref={ref}
         
         onPress={onPress}
-        className={`${baseClasses} ${variantClasses} ${className}`}
+        className={`${baseClasses} ${variantClasses} ${sizeClasses} ${className}`}
         {...props}
       >
         <Text className='text-white'>{title}</Text>
+        
       </TouchableOpacity>
     );
   }
