@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, Switch, useColorScheme } from 'react-native';
-import { Button } from '@/components/button';
+import { View, Text, Image, useColorScheme } from 'react-native';
 import { Input } from '@/components/input';
 import { RouteButton } from '@/components/route.button';
-import { Sun, Moon } from 'lucide-react-native'
 import { router } from 'expo-router';
+import { signIn } from '@/functions/order.functions';
 
 export default function Index() {
   const [email, setEmail] = useState('');
@@ -39,6 +38,7 @@ export default function Index() {
 
   const onSubmit = async () => {
     if (email && validateEmail(email) && password) {
+      await signIn(email, password)
       router.navigate('/orders')
     } else {
       alert('email invalido'); // Define isValidEmail como falso se o email não for válido
@@ -82,6 +82,7 @@ export default function Index() {
           onPress={onSubmit}
         />
       </View>
+
     </View>
   );
 }

@@ -1,17 +1,19 @@
 import { forwardRef } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-
+import type { IconNode } from 'lucide-react-native';
+import React from 'react';
 export interface ButtonProps {
   variant?: 'default' | 'error' | 'success' | 'warning' | 'outlined' | 'muted';
-  size?: 'small' | 'medium' | 'large';
-  title: string;
+  size?: 'smallest' |'small' | 'medium' | 'large';
+  title?: string;
+  icon?:IconNode;
   onPress: () => void;
   className?: string;
 }
 
 const Button = forwardRef<TouchableOpacity, ButtonProps>(
-  ({ variant = 'default', size = 'medium', title, onPress, className = '', ...props }, ref) => {
-    let baseClasses = 'rounded-md items-center ';
+  ({ variant = 'default', size = 'medium', title, icon, onPress, className = '', ...props }, ref) => {
+    let baseClasses = 'rounded items-center  ';
     let variantClasses = '';
     let sizeClasses = '';
 
@@ -39,6 +41,9 @@ const Button = forwardRef<TouchableOpacity, ButtonProps>(
     }
 
     switch (size) {
+      case 'smallest':
+        sizeClasses = 'py-1 px-4 my-1'
+        break
       case 'small':
         sizeClasses = 'py-2 px-3 my-1 ';
         break;
@@ -57,7 +62,7 @@ const Button = forwardRef<TouchableOpacity, ButtonProps>(
         className={`${baseClasses} ${variantClasses} ${sizeClasses} ${className}`}
         {...props}
       >
-        <Text className='text-white'>{title}</Text>
+        {React?.isValidElement(icon) ? icon : <Text className='text-white'>{title}</Text>}
         
       </TouchableOpacity>
     );
